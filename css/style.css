@@ -1,0 +1,252 @@
+/* Define box-sizing global para todos os elementos */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Variáveis */
+:root {
+    --primary-color: #1e90ff;
+    --dark-color: #333;
+    --light-color: #f9f9f9;
+    --font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Corpo da página */
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background: url('../img/oficina-bg.jpg') no-repeat center center fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    color: white;
+    line-height: 1.6;
+    min-height: 100vh; /* Garante que o corpo ocupe no mínimo toda a altura da tela */
+    display: flex;
+    flex-direction: column;
+}
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Ajuste o 0.6 para o nível de escuridão desejado */
+    z-index: -1;
+}
+
+.right-section {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    width: min(100vw, 800px); /* aumenta para 600px ou menos conforme a tela */
+    max-width: calc(100% - 60px);
+    color: white;
+    text-align: right;
+    box-sizing: border-box;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 30px;
+    margin-left: 80px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #aaa;
+}
+
+.headerTitle {
+    font-size: 120px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    animation-delay: 0.6s;
+    margin: 10px 0;
+    white-space: normal;  /* permite quebra de linha */
+    overflow: hidden;
+    text-align: right;    /* mantém alinhado à direita */
+    line-height: 1;       /* ajuste fino da altura entre linhas */
+}
+
+.animate {
+    animation: pop-in .6s ease-out forwards;
+    opacity: 0;
+}
+
+.headerSubtitle {
+    font-size: 30px;
+    text-transform: uppercase;
+    animation-delay: 0.8s;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 6px 42px;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo translúcido */
+    border: 1px solid white;
+    border-radius: 2px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.download-btn:hover {
+    background-color: white; /* Fundo branco */
+    color: black; /* Cor do texto para preto */
+}
+
+
+
+/* Centralizar o botão no topo */
+.header {
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Rodapé */
+.footer {
+    background-color: var(--dark-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto; /* Empurra o rodapé para o final da página */
+}
+
+/* Container para centralizar o conteúdo */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Estilo do botão */
+.menu-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Estilo do retângulo */
+.rectangle {
+    display: none;
+    width: 90%;
+    max-width: 650px;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 15px; /* valor ajustável conforme o efeito desejado */
+    position: fixed; /* muda de relative para fixed */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* centraliza no meio da tela */
+    color: black;
+    padding: 20px;
+    height: auto;
+    box-sizing: border-box;
+    z-index: 1000; /* garante que fique sobre os demais elementos */
+}
+
+/* Estilo para o botão de fechar (X) */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: black;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-size: 30px;
+    transition: 0.5s;
+    font-weight: 900;
+}
+
+.close-btn:hover {
+    color: red;
+    opacity: 0.5
+}
+
+/* Título dentro do retângulo */
+.menuTitle {
+    font-size: 40px;
+    margin-top: 50px;
+    color: black; /* Cor do texto do título */
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    line-height: normal;
+}
+
+/* Estilo dos botões de redes sociais */
+.social-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.social-btn {
+    background: none;         /* Remove a cor de fundo */
+    padding: 0;               /* Remove o preenchimento */
+    border: none;             /* Remove qualquer borda */
+    color: black;             /* Define a cor dos ícones */
+    font-size: 2rem;
+    transition: color 0.3s;
+}
+
+.social-btn:hover {
+    color: #555;              /* Cor ao passar o mouse (opcional) */
+}
+
+/* Estilo para o ícone */
+.social-btn i {
+    font-size: 2rem;
+}
+
+.links {
+    text-align: center;  /* Centraliza os links */
+}
+
+.links a {
+    display: block;  /* Faz com que cada link ocupe uma linha */
+    margin-bottom: 10px;  /* Espaçamento entre os links */
+}
+
+.logo {
+    position: fixed;
+    bottom: 10px;
+    left: 3%;
+    width: 200px;  /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    position: fixed;
+    max-width: 30%;
+    z-index: 100;
+}
